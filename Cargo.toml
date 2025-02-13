@@ -1,0 +1,7 @@
+[package]
+name = "portable-arc"
+version = "0.0.1-dev"
+edition = "2021"
+license = "MIT OR APACHE-2.0"
+
+[dependencies]
