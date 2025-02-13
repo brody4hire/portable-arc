@@ -10,8 +10,9 @@
 #[cfg(all(portable_atomic_arc, not(feature = "critical-section")))]
 compile_error!("portable_atomic_arc cfg flag requires critical-section feature to be enabled");
 
-#[cfg(all(feature = "critical-section", not(portable_atomic_arc)))]
-compile_error!("critical-section feature requires RUSTFLAGS with `--cfg portable_atomic_arc`");
+// TODO: enforce this with exception for documentation builds for docs.rs (etc.)
+// #[cfg(all(feature = "critical-section", not(portable_atomic_arc)))]
+// compile_error!("critical-section feature requires RUSTFLAGS with `--cfg portable_atomic_arc`");
 
 extern crate alloc;
 
