@@ -6,10 +6,11 @@ license = "MIT OR APACHE-2.0"
 
 [features]
 critical-section = [
+  "internal_select_portable_atomic_util",
   "dep:portable-atomic",
-  "dep:portable-atomic-util",
   "portable-atomic/critical-section",
 ]
+internal_select_portable_atomic_util = ["dep:portable-atomic-util"]
 
 [dependencies]
 portable-atomic = { version = "1.10.0", optional = true }
@@ -18,4 +19,7 @@ portable-atomic-util = { version = "0.2.4", default-features = false, optional =
 ] }
 
 [lints.rust]
-unexpected_cfgs = { level = "warn", check-cfg = ['cfg(portable_atomic_arc)'] }
+unexpected_cfgs = { level = "warn", check-cfg = [
+  'cfg(portable_atomic_arc)',
+  'cfg(unstable_maybe_portable_atomic_arc)',
+] }
