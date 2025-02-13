@@ -4,4 +4,12 @@ version = "0.0.1-dev"
 edition = "2021"
 license = "MIT OR APACHE-2.0"
 
+[features]
+critical-section = ["dep:portable-atomic", "dep:portable-atomic-util", "portable-atomic/critical-section"]
+
 [dependencies]
+portable-atomic = { version = "1.10.0", optional = true }
+portable-atomic-util = { version = "0.2.4", default-features = false, features = ["alloc"], optional = true }
+
+[lints.rust]
+unexpected_cfgs ={ level = "warn", check-cfg = ['cfg(portable_atomic_arc)']}
